@@ -8,25 +8,25 @@ export async function toolDispatcher(
     switch (request.params.name) {
       case "fetch-sii": {
         const { rut } = request.params.arguments as { rut: string };
-        const resultado = await handleSii(rut);
+        const results = await handleSii(rut);
         return {
           content: [
             {
               type: "text",
               text: `🔎 Resultado:
-            RUT: ${resultado.rut}
-            Razón Social: ${resultado.razon_social}
-            Inicio Actividades: ${resultado.inicio_actividades} (${resultado.fecha_inicio_actividades})
-            Empresa Menor Tamaño: ${resultado.empresa_menor_tamano}
-            Aut. Moneda Extranjera: ${resultado.aut_moneda_extranjera}
+              RUT: ${results.rut}
+              Razón Social: ${results.razon_social}
+              Inicio Actividades: ${results.inicio_actividades} (${results.fecha_inicio_actividades})
+              Empresa Menor Tamaño: ${results.empresa_menor_tamano}
+              Aut. Moneda Extranjera: ${results.aut_moneda_extranjera}
     
-            Giros:
-              ${resultado.actividades.map((a: { giro: string; codigo: number; categoria: string; afecta: boolean; }) =>
+              Giros:
+              ${results.actividades.map((a: { giro: string; codigo: number; categoria: string; afecta: boolean; }) =>
                 `- ${a.giro} (${a.codigo}) — ${a.categoria} — Afecta IVA: ${a.afecta ? 'Sí' : 'No'}`
               ).join('\n')}
     
-            Documentos Timbrados:
-              ${resultado.documentos_timbrados.map((d: { Documento: string; 'Año último timbraje': string }) =>
+              Documentos Timbrados:
+              ${results.documentos_timbrados.map((d: { Documento: string; 'Año último timbraje': string }) =>
                 `- ${d.Documento}: ${d['Año último timbraje']}`
               ).join('\n')}`
           },
