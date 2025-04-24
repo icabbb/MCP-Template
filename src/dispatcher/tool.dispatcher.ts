@@ -1,22 +1,39 @@
 import { CallToolRequestSchema } from "@modelcontextprotocol/sdk/types.js";
-import { handleGeolocation, handleWeather } from "../apis/index";
+import { handleSii } from "../apis/index";
 
 export async function toolDispatcher(
   request: typeof CallToolRequestSchema._type
 ) {
   try {
     switch (request.params.name) {
-      case "fetch-geolocation": {
-        const { city } = request.params.arguments as { city: string };
-        return await handleGeolocation(city);
-      }
-      case "fetch-weather": {
-        const { latitude, longitude } = request.params.arguments as {
-          latitude: string;
-          longitude: string;
+      case "fetch-sii": {
+        const { rut } = request.params.arguments as { rut: string };
+        const resultado = await handleSii(rut);
+        return {
+          content: [
+            {
+              type: "text",
+              text: `🔎 Resultado:
+            RUT: ${resultado.rut}
+            Razón Social: ${resultado.razon_social}
+            Inicio Actividades: ${resultado.inicio_actividades} (${resultado.fecha_inicio_actividades})
+            Empresa Menor Tamaño: ${resultado.empresa_menor_tamano}
+            Aut. Moneda Extranjera: ${resultado.aut_moneda_extranjera}
+    
+            Giros:
+              ${resultado.actividades.map((a: { giro: string; codigo: number; categoria: string; afecta: boolean; }) =>
+                `- ${a.giro} (${a.codigo}) — ${a.categoria} — Afecta IVA: ${a.afecta ? 'Sí' : 'No'}`
+              ).join('\n')}
+    
+            Documentos Timbrados:
+              ${resultado.documentos_timbrados.map((d: { Documento: string; 'Año último timbraje': string }) =>
+                `- ${d.Documento}: ${d['Año último timbraje']}`
+              ).join('\n')}`
+          },
+        ]
         };
-        return await handleWeather(latitude, longitude);
       }
+
       case "example_tool": {
         const { data } = request.params.arguments as { data: string };
         return {

@@ -3,53 +3,31 @@ import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import dotenv from "dotenv";
 import express, { Request, Response } from "express";
 
-import {
-  CallToolRequestSchema,
-  ListResourcesRequestSchema,
-  ListToolsRequestSchema,
-  ReadResourceRequestSchema,
-  Resource,
-  Tool,
-} from "@modelcontextprotocol/sdk/types.js";
+import { CallToolRequestSchema, ListToolsRequestSchema, Tool } from "@modelcontextprotocol/sdk/types.js";
 
 import {
-  EXAMPLE_TOOL,
-  FETCH_GEOLOCATION_TOOL,
-  FETCH_WEATHER_TOOL,
+  FETCH_SII_TOOL,
 } from "./tools/index.js";
 
-import {
-  LOG_RESOURCE,
-  PDF_RESOURCE,
-  HELLO_WORLD_RESOURCE,
-} from "./resource/index";
 
 import { toolDispatcher } from "./dispatcher/tool.dispatcher.js";
-import { resourceDispatcher } from "./dispatcher/resource.dispatcher.js";
 
 dotenv.config();
 
 const MCP_TOOLS: Tool[] = [
-  EXAMPLE_TOOL,
-  FETCH_GEOLOCATION_TOOL,
-  FETCH_WEATHER_TOOL,
+  FETCH_SII_TOOL,
 ];
 
-const MCP_RESOURCES: Resource[] = [
-  LOG_RESOURCE,
-  PDF_RESOURCE,
-  HELLO_WORLD_RESOURCE,
-];
+
 
 const server = new Server(
   {
-    name: process.env.NAME || "MCP Server",
-    version: process.env.VERSION || "1.0.0",
-    description: process.env.DESCRIPTION || "MCP Server",
+    name: "MCP - Consulta SII",
+    version: "1.0.0",
+    description: "MCP Server",
   },
   {
     capabilities: {
-      resources: {},
       tools: {},
     },
   }
@@ -61,13 +39,6 @@ server.setRequestHandler(ListToolsRequestSchema, async (request) => {
   };
 });
 
-server.setRequestHandler(ListResourcesRequestSchema, async (request) => {
-  return {
-    resources: MCP_RESOURCES,
-  };
-});
-
-server.setRequestHandler(ReadResourceRequestSchema, resourceDispatcher);
 server.setRequestHandler(CallToolRequestSchema, toolDispatcher);
 
 const app = express();

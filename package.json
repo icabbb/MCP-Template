@@ -8,12 +8,13 @@
     "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
     "process-data": "tsx src/process-data.ts",
     "inspector": "npx -y @modelcontextprotocol/inspector npx -y tsx ./src/index.ts",
-    "inspectorSSE": "npx tsx ./src/index_sse.ts & npx -y @modelcontextprotocol/inspector"
+    "inspectorSSE": "start cmd /k \"npx tsx ./src/index_sse.ts\" & start cmd /k \"npx -y @modelcontextprotocol/inspector\""
   },
   "author": "Eduardo Cardoso Martin",
   "license": "ISC",
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.10.1",
+    "cheerio": "^1.0.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "pdf-parse": "^1.1.1",
