@@ -139,7 +139,8 @@ Este proyecto está licenciado bajo [ISC License](https://opensource.org/license
 
 ## Autor
 
-[Tu Nombre] - [Tu correo electrónico]
+Eduardo Cardoso Martin - [cardosomartin33@gmail.com]
+Eduardo Cardoso Martinez - [ecardoso2002.ec@gmail.com]
 
 ## Recursos adicionales
 
