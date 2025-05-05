@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "build-tsup": "tsup",
-    "build": "tsc && node -e \"require('fs').chmodSync('dist/index.js', '755')\"",
+    "build": "npm run build-tsup",
     "process-data": "tsx src/process-data.ts",
     "inspector": "npx -y @modelcontextprotocol/inspector npx -y tsx ./src/index.ts",
     "inspectorSSE": "start cmd /k \"npx tsx ./src/index_sse.ts\" & start cmd /k \"npx -y @modelcontextprotocol/inspector\"",
     "dev": "npx tsx ./src/index_sse.ts"
+  
   },
-  "author": "Eduardo Cardoso Martin",
+  "author": "Eduardo Cardoso Martin  Eduardo Cardoso Martinez",
   "license": "ISC",
   "dependencies": {
     "@modelcontextprotocol/sdk": "1.10.1",
