@@ -37,7 +37,7 @@ src/
 ├── index_sse.ts   # Punto de entrada principal (servidor SSE)
 ├── index.ts       # Punto de entrada principal (servidor STDIO)
 ├── apis/          # Implementaciones de APIs
-└── process-data.ts # Procesamiento de datos
+
 ```
 
 ## Instalación
