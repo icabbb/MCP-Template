@@ -15,7 +15,6 @@ Este template proporciona toda la infraestructura necesaria para desarrollar her
 - 🔄 Implementación completa del Model Context Protocol (MCP)
 - 🔌 Servidor con Server-Sent Events (SSE) para comunicación en tiempo real
 - 🛠️ Estructura lista para implementar tus propias herramientas MCP
-- 📄 Soporte para procesamiento de datos (incluyendo PDFs como ejemplo)
 - 🔧 Arquitectura modular y fácilmente extensible
 
 ## Tecnologías
@@ -25,7 +24,7 @@ Este template proporciona toda la infraestructura necesaria para desarrollar her
 - **ModelContextProtocol SDK**: Implementación oficial del protocolo MCP
 - **SSE (Server-Sent Events)**: Para comunicación bidireccional con los modelos
 - **Zod**: Validación de esquemas
-- **PDF-parse**: Ejemplo de procesamiento de documentos PDF
+
 
 ## Arquitectura
 
