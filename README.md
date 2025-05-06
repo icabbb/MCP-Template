@@ -143,6 +143,6 @@ Eduardo Cardoso Martinez - [ecardoso2002.ec@gmail.com]
 
 ## Recursos adicionales
 
-- [Documentación oficial de MCP](https://modelcontextprotocol.ai/)
-- [SDK de MCP en GitHub](https://github.com/model-context-protocol/sdk)
-- [Ejemplos de implementaciones MCP](https://github.com/model-context-protocol/examples)
+- [Documentación oficial de MCP](https://modelcontextprotocol.io/)
+- [SDK de MCP en GitHub](https://github.com/modelcontextprotocol)
+- [Ejemplos de implementaciones MCP](https://modelcontextprotocol.io/examples)
