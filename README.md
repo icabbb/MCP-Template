@@ -44,7 +44,7 @@ src/
 
 ```bash
 # Clonar el repositorio
-git clone https://github.com/yourusername/mcp-template.git
+git clone https://github.com/icabbb/MCP-Template.git
 cd mcp-template
 
 # Instalar dependencias
